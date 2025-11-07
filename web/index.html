@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Finance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Dashboard Summary -->
+        <div class="dashboard">
+            <div class="card income">
+                <h3><i class="fas fa-arrow-down"></i> PEMASUKAN</h3>
+                <div class="amount" id="totalIncome">Rp 0</div>
+            </div>
+            <div class="card expense">
+                <h3><i class="fas fa-arrow-up"></i> PENGELUARAN</h3>
+                <div class="amount" id="totalExpense">Rp 0</div>
+            </div>
+            <div class="card balance">
+                <h3><i class="fas fa-piggy-bank"></i> SALDO</h3>
+                <div class="amount" id="totalBalance">Rp 0</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Form Input Transaksi -->
+            <div class="form-section">
+                <h2 class="section-title"><i class="fas fa-plus-circle"></i> Tambah Transaksi</h2>
+                
+                <div class="type-toggle">
+                    <button type="button" class="active" id="btnIncome">
+                        <i class="fas fa-arrow-down"></i> Pemasukan
+                    </button>
+                    <button type="button" id="btnExpense">
+                        <i class="fas fa-arrow-up"></i> Pengeluaran
+                    </button>
+                </div>
+
+                <form class="transaction-form" id="transactionForm">
+                    <input type="hidden" id="transactionType" value="income">
+                    
+                    <div class="form-group">
+                        <label for="transactionTitle">Judul Transaksi</label>
+                        <input type="text" id="transactionTitle" placeholder="Contoh: Gaji Bulanan" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionAmount">Jumlah (Rp)</label>
+                        <input type="number" id="transactionAmount" placeholder="0" min="0" step="1000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionCategory">Kategori</label>
+                        <select id="transactionCategory" required>
+                            <option value="">Pilih Kategori</option>
+                            <optgroup label="Pemasukan">
+                                <option value="Gaji">Gaji</option>
+                                <option value="Bonus">Bonus</option>
+                                <option value="Investasi">Investasi</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </optgroup>
+                            <optgroup label="Pengeluaran">
+                                <option value="Makanan">Makanan</option>
+                                <option value="Transportasi">Transportasi</option>
+                                <option value="Hiburan">Hiburan</option>
+                                <option value="Tagihan">Tagihan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionDate">Tanggal</label>
+                        <input type="date" id="transactionDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionNotes">Catatan (Opsional)</label>
+                        <textarea id="transactionNotes" rows="2" placeholder="Tambahkan catatan..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Simpan Transaksi
+                    </button>
+                </form>
+            </div>
+
+            <!-- Daftar Transaksi -->
+            <div class="transactions-section">
+                <h2 class="section-title"><i class="fas fa-history"></i> Riwayat Transaksi</h2>
+
+                <div class="transactions-list" id="transactionsList">
+                    <div class="no-transactions">
+                        <i class="fas fa-receipt" style="font-size: 2.5em; margin-bottom: 10px; opacity: 0.5;"></i>
+                        <p>Memuat data transaksi...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="/eel.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
